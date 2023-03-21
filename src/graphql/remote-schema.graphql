@@ -1,0 +1,118 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type AddMovieResponse {
+    created_at: String!
+    id: Int!
+    imdb_id: String!
+    movie: Movie!
+    movie_list_id: Int!
+}
+
+type Movie {
+    Actors: String
+    Awards: String
+    BoxOffice: String
+    Country: String
+    DVD: String
+    Director: String
+    Genre: String
+    Language: String
+    Metascore: String
+    Plot: String
+    Poster: String
+    Production: String
+    Rated: String
+    Ratings: [Rating]
+    Released: String
+    Response: String
+    Runtime: String
+    Title: String
+    Type: String
+    Website: String
+    Writer: String
+    Year: String
+    imdbID: String
+    imdbRating: String
+    imdbVotes: String
+}
+
+type MovieList {
+    created_at: String!
+    email: String!
+    id: Int!
+    name: String!
+}
+
+type MovieListItem {
+    created_at: String!
+    id: Int!
+    imdb_id: String!
+    movie: Movie!
+    movie_list_id: Int!
+}
+
+type Mutation {
+    addMovie(imdbId: String!, listId: Int!): AddMovieResponse!
+    addTODO(desc: String!, listId: Int!): TODOListItem!
+    createList(input: CreateListInput!): MovieList!
+    createTODOList(input: CreateTODOListInput!): TODOList!
+    deleteList(id: Int!): Boolean!
+    deleteTODOList(id: Int!): Boolean!
+    finishTODO(id: Int!, listId: Int!): TODOListItem!
+    removeMovie(id: Int!, listId: Int!): Boolean!
+    removeTODO(id: Int!, listId: Int!): Boolean!
+}
+
+type Query {
+    getMovieList(id: Int!): MovieList!
+    getMovieListItems(listId: Int!): [MovieListItem!]!
+    getMovieLists(email: String!): [MovieList!]!
+    getTODOList(id: Int!): TODOList!
+    getTODOLists(email: String!): [TODOList!]!
+    getTODOs(listId: Int!): [TODOListItem!]!
+    searchMovieById(id: String!): Movie
+    searchMovieByTitle(title: String!, year: String): [SearchMovie]
+}
+
+type Rating {
+    Source: String
+    Value: String
+}
+
+type SearchMovie {
+    Poster: String
+    Title: String
+    Type: String
+    Year: String
+    imdbID: String
+}
+
+type TODOList {
+    created_at: String!
+    email: String!
+    id: Int!
+    name: String!
+}
+
+type TODOListItem {
+    created_at: String!
+    desc: String!
+    finished: Boolean!
+    id: Int!
+    todo_list_id: Int!
+}
+
+input CreateListInput {
+    email: String!
+    name: String!
+}
+
+input CreateTODOListInput {
+    email: String!
+    name: String!
+}
