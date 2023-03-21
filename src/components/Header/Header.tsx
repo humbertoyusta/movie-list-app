@@ -6,13 +6,19 @@ import {
 } from "@/components/Header/Header.styled";
 import BackButton from "@/components/BackButton";
 
-export default function Header({ title }: { title: string }) {
+interface IHeaderProps {
+    title: string;
+    hasBackButton?: boolean;
+}
+
+export default function Header({ title, hasBackButton }: IHeaderProps) {
     return (
         <>
             <HeaderWrapper>
-                <BackButton />
+                {hasBackButton && <BackButton />}
+                {!hasBackButton && <EmptyDiv key="empty-div-1" />}
                 <HeaderTitle>{title}</HeaderTitle>
-                <EmptyDiv />
+                <EmptyDiv key="empty-div-2" />
             </HeaderWrapper>
             <GrayLine />
         </>

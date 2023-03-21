@@ -16,7 +16,7 @@ export const HeaderWrapper = styled.div`
 export const HeaderTitle = styled.h1`
     font-size: 24px;
     font-weight: 700;
-
+    transform: translateX(-25%);
     color: #000;
 `;
 
