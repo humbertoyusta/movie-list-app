@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
     "@types/node": "18.15.5",
@@ -18,14 +19,19 @@
     "eslint-config-next": "13.2.4",
     "framer-motion": "^10.6.1",
     "graphql-request": "^5.2.0",
-    "graphql-tools": "^8.3.19",
     "lottie-web": "^5.10.2",
     "next": "13.2.4",
     "prettier": "^2.8.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.7",
+    "react-icons": "^4.8.0",
     "styled-components": "^5.3.9",
     "typescript": "5.0.2"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^3.2.2",
+    "@graphql-codegen/client-preset": "^2.1.1",
+    "@graphql-codegen/typescript-graphql-request": "^4.5.8"
   }
 }

@@ -1,9 +1,9 @@
 {
-  "name": "GraphQL Schema",
+  "name": "Movies List Schema",
   "schemaPath": "remote-schema.graphql",
   "extensions": {
     "endpoints": {
-      "Remote GraphQL Endpoint": {
+      "Remote SWAPI GraphQL Endpoint": {
         "url": "https://harbour-movies.vercel.app/api/graphql",
         "headers": {
           "user-agent": "JS GraphQL"
