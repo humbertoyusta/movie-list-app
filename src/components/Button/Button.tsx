@@ -1,17 +1,13 @@
+import { ButtonHTMLAttributes } from "react";
 import { ButtonWrapper } from "@/components/Button/Button.styled";
-import Image from "next/image";
 
 interface IButtonProps {
-    kind: "back";
-    onClick?: () => void;
+    text: string;
 }
 
-export default function Button({ kind, onClick }: IButtonProps) {
-    return (
-        <ButtonWrapper onClick={onClick}>
-            {kind === "back" && (
-                <Image src={"/back.svg"} width={20} height={20} alt="go-back" />
-            )}
-        </ButtonWrapper>
-    );
+export default function Button({
+    text,
+    ...rest
+}: IButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
+    return <ButtonWrapper {...rest}>{text}</ButtonWrapper>;
 }
