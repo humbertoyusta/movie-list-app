@@ -1,17 +1,31 @@
+"use client";
+
 import { GrAddCircle } from "react-icons/all";
 import {
     AddListItemWrapper,
     AddListText,
     IconWrapper,
 } from "@/components/List/AddListItem/AddListItem.styled";
+import { useState } from "react";
+import Modal from "@/components/Modal";
+import CreateListForm from "@/components/CreateListForm";
 
 export default function AddListItem() {
+    const [createListForm, setCreateListForm] = useState(false);
+
     return (
-        <AddListItemWrapper>
-            <IconWrapper>
-                <GrAddCircle size={42} />
-            </IconWrapper>
-            <AddListText>Add a list</AddListText>
-        </AddListItemWrapper>
+        <>
+            <AddListItemWrapper onClick={() => setCreateListForm(true)}>
+                <IconWrapper>
+                    <GrAddCircle size={42} />
+                </IconWrapper>
+                <AddListText>Add a list</AddListText>
+            </AddListItemWrapper>
+            {createListForm && (
+                <Modal onClose={() => setCreateListForm(false)}>
+                    <CreateListForm />
+                </Modal>
+            )}
+        </>
     );
 }
