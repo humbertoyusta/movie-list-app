@@ -1,6 +1,6 @@
 import StyledComponentsRegistry from "@/app/registry";
-import Sidebar from "@/components/Sidebar";
 import React from "react";
+import Sidebar from "@/components/Sidebar";
 
 export const metadata = {
     title: "Movie List App",
@@ -17,7 +17,7 @@ export default function RootLayout({
             <body>
                 <StyledComponentsRegistry>
                     <Sidebar />
-                    {children}
+                    <main>{children}</main>
                 </StyledComponentsRegistry>
             </body>
         </html>
