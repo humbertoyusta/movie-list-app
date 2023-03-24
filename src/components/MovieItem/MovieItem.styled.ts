@@ -50,7 +50,7 @@ export const MovieGenres = styled.div`
     font-size: 14px;
 `;
 
-export const FavoritesButtonWrapper = styled.div`
+export const RemoveButtonWrapper = styled.div`
     position: absolute;
-    z-index: 1;
+    z-index: 20;
 `;
