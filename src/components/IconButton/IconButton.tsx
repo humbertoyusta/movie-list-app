@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { IconButtonWrapper } from "@/components/IconButton/IconButton.styled";
+import { TiArrowBack } from "react-icons/ti";
 
 interface IButtonProps {
     kind: "back";
@@ -9,9 +9,7 @@ interface IButtonProps {
 export default function IconButton({ kind, onClick }: IButtonProps) {
     return (
         <IconButtonWrapper onClick={onClick}>
-            {kind === "back" && (
-                <Image src={"/back.svg"} width={20} height={20} alt="go-back" />
-            )}
+            {kind === "back" && <TiArrowBack size={28} />}
         </IconButtonWrapper>
     );
 }
