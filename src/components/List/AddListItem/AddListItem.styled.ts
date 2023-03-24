@@ -23,7 +23,7 @@ export const IconWrapper = styled.div`
     margin-top: 3.4vw;
 `;
 
-export const AddListText = styled.h2`
+export const AddListText = styled.p`
     font-size: 1em;
     font-weight: 400;
     margin-top: 6px;

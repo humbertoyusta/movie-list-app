@@ -5,6 +5,9 @@ import {
     Form,
 } from "@/components/CreateListForm/CreateListForm.styled";
 import Button from "@/components/Button";
+import { sdk } from "@/graphql/client";
+import { MY_EMAIL_KEY } from "@/constants";
+import { useRouter } from "next/navigation";
 
 export default function CreateListForm() {
     const {
@@ -12,9 +15,16 @@ export default function CreateListForm() {
         handleSubmit,
         formState: { isSubmitting, errors },
     } = useForm<{ name: string }>();
+    const router = useRouter();
 
-    function handleCreateList({ name }: { name: string }) {
-        console.log(name);
+    async function handleCreateList({ name }: { name: string }) {
+        const {
+            createList: { id },
+        } = await sdk.createList({
+            name: name,
+            email: MY_EMAIL_KEY,
+        });
+        router.push(`/lists/${id}`);
     }
 
     return (

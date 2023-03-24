@@ -1,6 +1,5 @@
 "use client";
 
-import { GrAddCircle } from "react-icons/all";
 import {
     AddListItemWrapper,
     AddListText,
@@ -9,6 +8,7 @@ import {
 import { useState } from "react";
 import Modal from "@/components/Modal";
 import CreateListForm from "@/components/CreateListForm";
+import { GrAddCircle } from "react-icons/gr";
 
 export default function AddListItem() {
     const [createListForm, setCreateListForm] = useState(false);
