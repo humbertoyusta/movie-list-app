@@ -9,16 +9,23 @@ export const ListItemWrapper = styled.div`
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin-bottom: 2vw;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
+    //display: flex;
+    //flex-direction: column;
+    //align-content: center;
+    //align-items: center;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 
     &:hover {
         transform: translateY(-8px);
     }
+`;
+
+export const ListItemInnerWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
 `;
 
 export const MovieListName = styled.h2`
@@ -30,4 +37,12 @@ export const MovieListName = styled.h2`
 
 export const IconWrapper = styled.div`
     margin-top: 3vw;
+`;
+
+export const RemoveButtonWrapper = styled.div`
+    position: absolute;
+    align-self: auto;
+    justify-self: auto;
+    //left: -1vw;
+    z-index: 20;
 `;

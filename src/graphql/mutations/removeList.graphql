@@ -1,0 +1,3 @@
+mutation removeList($id: Int!) {
+    deleteList(id: $id)
+}

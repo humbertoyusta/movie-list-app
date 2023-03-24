@@ -215,6 +215,12 @@ export type CreateListMutationVariables = Exact<{
 
 export type CreateListMutation = { createList: { id: number; name: string } };
 
+export type RemoveListMutationVariables = Exact<{
+    id: Scalars["Int"];
+}>;
+
+export type RemoveListMutation = { deleteList: boolean };
+
 export type RemoveMovieMutationVariables = Exact<{
     listId: Scalars["Int"];
     movieId: Scalars["Int"];
@@ -255,6 +261,11 @@ export const CreateListDocument = /*#__PURE__*/ gql`
             id
             name
         }
+    }
+`;
+export const RemoveListDocument = /*#__PURE__*/ gql`
+    mutation removeList($id: Int!) {
+        deleteList(id: $id)
     }
 `;
 export const RemoveMovieDocument = /*#__PURE__*/ gql`
@@ -318,6 +329,21 @@ export function getSdk(
                         { ...requestHeaders, ...wrappedRequestHeaders }
                     ),
                 "createList",
+                "mutation"
+            );
+        },
+        removeList(
+            variables: RemoveListMutationVariables,
+            requestHeaders?: Dom.RequestInit["headers"]
+        ): Promise<RemoveListMutation> {
+            return withWrapper(
+                (wrappedRequestHeaders) =>
+                    client.request<RemoveListMutation>(
+                        RemoveListDocument,
+                        variables,
+                        { ...requestHeaders, ...wrappedRequestHeaders }
+                    ),
+                "removeList",
                 "mutation"
             );
         },

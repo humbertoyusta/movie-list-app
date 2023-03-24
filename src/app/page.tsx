@@ -11,7 +11,7 @@ export default async function Home() {
     return (
         <>
             <Header title={"Movie List App"} />
-            <List movieLists={movieLists} />
+            <List initialMovieLists={movieLists} />
         </>
     );
 }
