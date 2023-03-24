@@ -4,7 +4,7 @@ import {
     ListItemWrapper,
     MovieListName,
 } from "@/components/List/ListItem/ListItem.styled";
-import { BiImageAdd } from "react-icons/all";
+import { BiImageAdd } from "react-icons/bi";
 
 export default function ListItem({ movieList }: { movieList: IMovieList }) {
     return (
