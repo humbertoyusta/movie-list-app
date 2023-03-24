@@ -208,6 +208,39 @@ export type TodoListItem = {
     todo_list_id: Scalars["Int"];
 };
 
+export type CreateListMutationVariables = Exact<{
+    name: Scalars["String"];
+    email: Scalars["String"];
+}>;
+
+export type CreateListMutation = { createList: { id: number; name: string } };
+
+export type RemoveMovieMutationVariables = Exact<{
+    listId: Scalars["Int"];
+    movieId: Scalars["Int"];
+}>;
+
+export type RemoveMovieMutation = { removeMovie: boolean };
+
+export type GetMovieListQueryVariables = Exact<{
+    id: Scalars["Int"];
+}>;
+
+export type GetMovieListQuery = {
+    getMovieList: { name: string };
+    getMovieListItems: Array<{
+        id: number;
+        movie: {
+            imdbID?: string | null;
+            Title?: string | null;
+            Poster?: string | null;
+            imdbRating?: string | null;
+            Year?: string | null;
+            Genre?: string | null;
+        };
+    }>;
+};
+
 export type GetMovieListsQueryVariables = Exact<{
     email: Scalars["String"];
 }>;
@@ -216,6 +249,37 @@ export type GetMovieListsQuery = {
     getMovieLists: Array<{ id: number; name: string }>;
 };
 
+export const CreateListDocument = /*#__PURE__*/ gql`
+    mutation createList($name: String!, $email: String!) {
+        createList(input: { name: $name, email: $email }) {
+            id
+            name
+        }
+    }
+`;
+export const RemoveMovieDocument = /*#__PURE__*/ gql`
+    mutation removeMovie($listId: Int!, $movieId: Int!) {
+        removeMovie(listId: $listId, id: $movieId)
+    }
+`;
+export const GetMovieListDocument = /*#__PURE__*/ gql`
+    query getMovieList($id: Int!) {
+        getMovieList(id: $id) {
+            name
+        }
+        getMovieListItems(listId: $id) {
+            id
+            movie {
+                imdbID
+                Title
+                Poster
+                imdbRating
+                Year
+                Genre
+            }
+        }
+    }
+`;
 export const GetMovieListsDocument = /*#__PURE__*/ gql`
     query getMovieLists($email: String!) {
         getMovieLists(email: $email) {
@@ -242,6 +306,51 @@ export function getSdk(
     withWrapper: SdkFunctionWrapper = defaultWrapper
 ) {
     return {
+        createList(
+            variables: CreateListMutationVariables,
+            requestHeaders?: Dom.RequestInit["headers"]
+        ): Promise<CreateListMutation> {
+            return withWrapper(
+                (wrappedRequestHeaders) =>
+                    client.request<CreateListMutation>(
+                        CreateListDocument,
+                        variables,
+                        { ...requestHeaders, ...wrappedRequestHeaders }
+                    ),
+                "createList",
+                "mutation"
+            );
+        },
+        removeMovie(
+            variables: RemoveMovieMutationVariables,
+            requestHeaders?: Dom.RequestInit["headers"]
+        ): Promise<RemoveMovieMutation> {
+            return withWrapper(
+                (wrappedRequestHeaders) =>
+                    client.request<RemoveMovieMutation>(
+                        RemoveMovieDocument,
+                        variables,
+                        { ...requestHeaders, ...wrappedRequestHeaders }
+                    ),
+                "removeMovie",
+                "mutation"
+            );
+        },
+        getMovieList(
+            variables: GetMovieListQueryVariables,
+            requestHeaders?: Dom.RequestInit["headers"]
+        ): Promise<GetMovieListQuery> {
+            return withWrapper(
+                (wrappedRequestHeaders) =>
+                    client.request<GetMovieListQuery>(
+                        GetMovieListDocument,
+                        variables,
+                        { ...requestHeaders, ...wrappedRequestHeaders }
+                    ),
+                "getMovieList",
+                "query"
+            );
+        },
         getMovieLists(
             variables: GetMovieListsQueryVariables,
             requestHeaders?: Dom.RequestInit["headers"]
