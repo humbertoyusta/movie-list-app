@@ -7,7 +7,7 @@ import {
     RemoveButtonWrapper,
 } from "@/components/List/ListItem/ListItem.styled";
 import { BiImageAdd } from "react-icons/bi";
-import RemoveButton from "@/components/RemoveButton";
+import RemoveButton from "@/components/Buttons/RemoveButton";
 
 interface IListItemProps {
     movieList: IMovieList;

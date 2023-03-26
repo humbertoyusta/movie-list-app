@@ -10,7 +10,7 @@ import {
 } from "./MovieItem.styled";
 import Image from "next/image";
 import { Movie } from "@/types/Movie";
-import RemoveButton from "@/components/RemoveButton";
+import RemoveButton from "@/components/Buttons/RemoveButton";
 
 interface IMovieItemProps {
     movie: Movie;

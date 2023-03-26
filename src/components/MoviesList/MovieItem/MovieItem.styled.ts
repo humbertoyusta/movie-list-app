@@ -9,7 +9,7 @@ export const MovieCard = styled(motion.div)`
     position: relative;
     overflow: hidden;
     border-radius: 20px;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
 `;
 
 export const MovieLink = styled(Link)`
