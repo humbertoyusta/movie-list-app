@@ -13,10 +13,12 @@ export default function MovieDetails({ movie }: { movie: MovieWithDetails }) {
     return (
         <MovieDetailsWrapper>
             <ImageWrapper>
-                <NextImage
-                    src={movie?.Poster || ""}
-                    alt={movie?.Title || "Movie Title"}
-                />
+                {movie?.Poster !== "N/A" && (
+                    <NextImage
+                        src={movie?.Poster || ""}
+                        alt={movie?.Title || "Movie Title"}
+                    />
+                )}
             </ImageWrapper>
             <MovieDetailsInfoWrapper>
                 <MovieDetailsInfo>Rating: {movie?.imdbRating}</MovieDetailsInfo>

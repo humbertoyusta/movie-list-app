@@ -37,14 +37,16 @@ export default function MovieItem({ movie, index, onRemove }: IMovieItemProps) {
                         <RemoveButton onRemove={onRemove} />
                     </RemoveButtonWrapper>
                 )}
-                {movie.movie.Poster && movie.movie.Title && (
-                    <Image
-                        src={movie.movie.Poster}
-                        alt={movie.movie.Title}
-                        fill
-                        sizes="100% 100%"
-                    />
-                )}
+                {movie.movie.Poster &&
+                    movie.movie.Poster !== "N/A" &&
+                    movie.movie.Title && (
+                        <Image
+                            src={movie.movie.Poster}
+                            alt={movie.movie.Title}
+                            fill
+                            sizes="100% 100%"
+                        />
+                    )}
                 <MovieInfoCard>
                     <MovieInfo>
                         <div>{movie.movie.Title}</div>

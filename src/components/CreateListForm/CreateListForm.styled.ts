@@ -6,6 +6,7 @@ export const Form = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 20px 15px;
 `;
 
 export const ButtonExternalWrapper = styled.div`
