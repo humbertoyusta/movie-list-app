@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
-import LoadingAnimation from "@/components/LoadingAnimation";
+import LoadingAnimation from "@/components/Animations/LoadingAnimation";
 
 interface IImageProps {
     src: string;
