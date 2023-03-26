@@ -1,10 +1,11 @@
 "use client";
 
 import { MovieListWrapper } from "@/components/MoviesList/MovieList.styled";
-import MovieItem from "@/components/MovieItem";
+import MovieItem from "@/components/MoviesList/MovieItem";
 import { Movie } from "@/types/Movie";
 import { useState } from "react";
 import { sdk } from "@/graphql/client";
+import AddMovieItem from "@/components/MoviesList/AddMovieItem";
 
 interface MovieListProps {
     listId: number;
@@ -29,6 +30,7 @@ export default function MovieList({ listId, initialMovies }: MovieListProps) {
                     onRemove={() => handleRemoveMovies(movie.id)}
                 />
             ))}
+            <AddMovieItem />
         </MovieListWrapper>
     );
 }

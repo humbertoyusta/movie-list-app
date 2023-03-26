@@ -7,8 +7,9 @@ export const MovieListWrapper = styled.div`
     flex-direction: row;
     position: relative;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 4vw;
     margin-left: 16vw;
     margin-right: 2vw;
-    width: 82vw;
+    width: 76vw;
+    padding: 2vw 3vw;
 `;
