@@ -5,7 +5,7 @@ import { SidebarWrapper, WhiteBar } from "./Sidebar.styled";
 export default function Sidebar() {
     return (
         <SidebarWrapper>
-            <Logo />
+            <Logo withLink />
             <WhiteBar />
             <Navbar />
         </SidebarWrapper>
