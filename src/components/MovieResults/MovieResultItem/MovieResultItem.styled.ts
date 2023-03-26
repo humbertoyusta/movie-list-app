@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { theme } from "@/theme";
+import { motion } from "framer-motion";
 
-export const MovieResultItemWrapper = styled.div`
+export const MovieResultItemWrapper = styled(motion.div)`
     width: calc(16% - 20px);
     height: 28vh;
     position: relative;

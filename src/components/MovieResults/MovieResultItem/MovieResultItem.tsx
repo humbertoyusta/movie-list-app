@@ -18,7 +18,15 @@ export default function MovieResultItem({
     onClick,
 }: IMovieResultItemProps) {
     return (
-        <MovieResultItemWrapper onClick={() => onClick()}>
+        <MovieResultItemWrapper
+            onClick={() => onClick()}
+            key={`${movie?.imdbID}`}
+            initial={{ opacity: 0, rotate: -5, x: -15, y: -15 }}
+            animate={{ opacity: 1, rotate: 0, x: 0, y: 0 }}
+            exit={{ opacity: 0, rotate: -5, x: -15, y: -15 }}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
             <MovieResultItemInnerWrapper selected={selected}>
                 {movie &&
                     movie.Poster &&

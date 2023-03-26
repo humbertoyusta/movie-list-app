@@ -3,27 +3,31 @@
 import { ListWrapper, StyledLink } from "@/components/List/List.styled";
 import ListItem from "@/components/List/ListItem";
 import AddListItem from "@/components/List/AddListItem";
-import IMovieList from "@/interfaces/IMovieList";
-import { useState } from "react";
 import { sdk } from "@/graphql/client";
+import { MY_EMAIL_KEY } from "@/constants";
+import useAsync from "@/hooks/useAsync";
 
-interface IListProps {
-    initialMovieLists: IMovieList[];
-}
-
-export default function List({ initialMovieLists }: IListProps) {
-    const [movieLists, setMovieLists] = useState(initialMovieLists);
+export default function List() {
+    const {
+        data: movieLists,
+        loading,
+        error,
+        reCall: refetch,
+    } = useAsync(async () => {
+        const movieLists = await sdk.getMovieLists({
+            email: MY_EMAIL_KEY,
+        });
+        return movieLists.getMovieLists;
+    });
 
     async function handleRemoveList(movieListId: number) {
-        if (await sdk.removeList({ id: movieListId }))
-            setMovieLists(
-                movieLists.filter((movieList) => movieList.id !== movieListId)
-            );
+        await sdk.removeList({ id: movieListId });
+        refetch();
     }
 
     return (
         <ListWrapper>
-            {movieLists.map((movieList) => (
+            {movieLists?.map((movieList) => (
                 <StyledLink href={`/lists/${movieList.id}`} key={movieList.id}>
                     <ListItem
                         key={movieList.id}

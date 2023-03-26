@@ -1,7 +1,4 @@
 query getMovieList($id: Int!) {
-    getMovieList(id: $id) {
-        name
-    }
     getMovieListItems(listId: $id) {
         id
         movie {

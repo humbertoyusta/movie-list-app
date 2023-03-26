@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface IUseAsyncReturn<T> {
     loading: boolean;
     data: T | null;
     error: Error | null;
+    reCall: () => void;
 }
 
 export default function useAsync<T>(
@@ -12,6 +13,7 @@ export default function useAsync<T>(
     const [loading, setLoading] = useState<boolean>(true);
     const [data, setData] = useState<T | null>(null);
     const [error, setError] = useState<Error | null>(null);
+    const [randomNumber, setRandomNumber] = useState<number>(0);
 
     useEffect(() => {
         asyncFunction()
@@ -25,7 +27,9 @@ export default function useAsync<T>(
                 setData(null);
                 setError(error);
             });
-    }, [asyncFunction]);
+    }, [asyncFunction, randomNumber]);
 
-    return { loading, data, error };
+    const reCall = useCallback(() => setRandomNumber(Math.random()), []);
+
+    return { loading, data, error, reCall };
 }
