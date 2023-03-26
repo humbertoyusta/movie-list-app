@@ -1,0 +1,7 @@
+query searchMovieByTitle ($title: String!) {
+  searchMovieByTitle(title: $title) {
+      imdbID
+      Title
+      Poster
+  }
+}

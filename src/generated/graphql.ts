@@ -255,6 +255,18 @@ export type GetMovieListsQuery = {
     getMovieLists: Array<{ id: number; name: string }>;
 };
 
+export type SearchMovieByTitleQueryVariables = Exact<{
+    title: Scalars["String"];
+}>;
+
+export type SearchMovieByTitleQuery = {
+    searchMovieByTitle?: Array<{
+        imdbID?: string | null;
+        Title?: string | null;
+        Poster?: string | null;
+    } | null> | null;
+};
+
 export const CreateListDocument = /*#__PURE__*/ gql`
     mutation createList($name: String!, $email: String!) {
         createList(input: { name: $name, email: $email }) {
@@ -296,6 +308,15 @@ export const GetMovieListsDocument = /*#__PURE__*/ gql`
         getMovieLists(email: $email) {
             id
             name
+        }
+    }
+`;
+export const SearchMovieByTitleDocument = /*#__PURE__*/ gql`
+    query searchMovieByTitle($title: String!) {
+        searchMovieByTitle(title: $title) {
+            imdbID
+            Title
+            Poster
         }
     }
 `;
@@ -389,6 +410,21 @@ export function getSdk(
                         { ...requestHeaders, ...wrappedRequestHeaders }
                     ),
                 "getMovieLists",
+                "query"
+            );
+        },
+        searchMovieByTitle(
+            variables: SearchMovieByTitleQueryVariables,
+            requestHeaders?: Dom.RequestInit["headers"]
+        ): Promise<SearchMovieByTitleQuery> {
+            return withWrapper(
+                (wrappedRequestHeaders) =>
+                    client.request<SearchMovieByTitleQuery>(
+                        SearchMovieByTitleDocument,
+                        variables,
+                        { ...requestHeaders, ...wrappedRequestHeaders }
+                    ),
+                "searchMovieByTitle",
                 "query"
             );
         },
