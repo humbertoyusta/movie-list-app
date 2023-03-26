@@ -3,11 +3,11 @@ import AddMoviesModalHeader from "@/components/AddMoviesModal/AddMoviesModalHead
 import { useCallback, useState } from "react";
 import { sdk } from "@/graphql/client";
 import useAsync from "@/hooks/useAsync";
-import LoadingAnimation from "@/components/LoadingAnimation";
+import LoadingAnimation from "@/components/Animations/LoadingAnimation";
 import MovieResults from "@/components/MovieResults";
 import SelectedMoviesBar from "@/components/AddMoviesModal/SelectedMoviesBar";
-import { useRouter } from "next/navigation";
 import { Movie } from "@/types/Movie";
+import SearchForSomethingAnimation from "@/components/Animations/SearchForSomethingAnimation";
 
 interface IAddMoviesModalProps {
     listId: number;
@@ -22,9 +22,8 @@ export default function AddMoviesModal({
     close,
     refetchMovies,
 }: IAddMoviesModalProps) {
-    const [searchValue, setSearchValue] = useState<string>("make");
+    const [searchValue, setSearchValue] = useState<string>("");
     const [selectedMovies, setSelectedMovies] = useState<string[]>([]);
-    const router = useRouter();
     const movieIds = movies.map((movie) => movie.movie?.imdbID || "");
 
     const syncMovies = useCallback(async () => {
@@ -60,6 +59,9 @@ export default function AddMoviesModal({
                 close={close}
             />
             {loading && <LoadingAnimation />}
+            {resultMovies && !resultMovies?.searchMovieByTitle && (
+                <SearchForSomethingAnimation />
+            )}
             {resultMovies && resultMovies.searchMovieByTitle && (
                 <MovieResults
                     movieResults={resultMovies.searchMovieByTitle.filter(
