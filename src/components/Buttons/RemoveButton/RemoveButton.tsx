@@ -1,4 +1,4 @@
-import { ButtonWrapper } from "@/components/RemoveButton/RemoveButton.styled";
+import { ButtonWrapper } from "@/components/Buttons/RemoveButton/RemoveButton.styled";
 import { MdDeleteForever } from "react-icons/md";
 
 export default function RemoveButton({ onRemove }: { onRemove: () => void }) {

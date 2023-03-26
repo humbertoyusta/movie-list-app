@@ -4,7 +4,7 @@ import {
     HeaderTitle,
     HeaderWrapper,
 } from "@/components/Header/Header.styled";
-import BackButton from "@/components/BackButton";
+import BackButton from "@/components/Buttons/BackButton";
 
 interface IHeaderProps {
     title: string;

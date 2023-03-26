@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes } from "react";
-import { ButtonWrapper } from "@/components/Button/Button.styled";
+import { ButtonWrapper } from "@/components/Buttons/Button/Button.styled";
 
 interface IButtonProps {
     text: string;

@@ -4,7 +4,7 @@ import {
     ButtonExternalWrapper,
     Form,
 } from "@/components/CreateListForm/CreateListForm.styled";
-import Button from "@/components/Button";
+import Button from "@/components/Buttons/Button";
 import { sdk } from "@/graphql/client";
 import { MY_EMAIL_KEY } from "@/constants";
 import { useRouter } from "next/navigation";
