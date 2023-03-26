@@ -20,6 +20,11 @@ export default function MovieList({ listId, initialMovies }: MovieListProps) {
             setMovies(movies.filter((movie) => movie.id !== movieId));
     }
 
+    async function refetchMovies() {
+        const movieList = await sdk.getMovieList({ id: listId });
+        setMovies(movieList.getMovieListItems);
+    }
+
     return (
         <MovieListWrapper>
             {movies.map((movie, index) => (
@@ -30,7 +35,11 @@ export default function MovieList({ listId, initialMovies }: MovieListProps) {
                     onRemove={() => handleRemoveMovies(movie.id)}
                 />
             ))}
-            <AddMovieItem />
+            <AddMovieItem
+                listId={listId}
+                movies={movies}
+                refetchMovies={refetchMovies}
+            />
         </MovieListWrapper>
     );
 }

@@ -1,18 +1,20 @@
 import { AddMoviesModalHeaderWrapper } from "@/components/AddMoviesModal/AddMoviesModalHeader/AddMoviesModalHeader.styled";
 import SearchBar from "@/components/SearchBar";
 import IconButton from "@/components/Buttons/IconButton";
-import { MdPlaylistAdd } from "react-icons/all";
+import { MdOutlineLocalMovies } from "react-icons/md";
+
+interface IAddMoviesModalHeaderProps {
+    setSearchValue: (value: string) => void;
+    close: () => void;
+}
 
 export default function AddMoviesModalHeader({
     setSearchValue,
     close,
-}: {
-    setSearchValue: (value: string) => void;
-    close: () => void;
-}) {
+}: IAddMoviesModalHeaderProps) {
     return (
         <AddMoviesModalHeaderWrapper>
-            <MdPlaylistAdd size={28} />
+            <MdOutlineLocalMovies size={28} />
             <SearchBar setSearchValue={setSearchValue} />
             <IconButton kind={"close"} onClick={() => close()} />
         </AddMoviesModalHeaderWrapper>

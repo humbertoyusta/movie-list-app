@@ -9,8 +9,19 @@ import {
     IconWrapper,
 } from "@/components/MoviesList/AddMovieItem/AddMovieItem.styled";
 import AddMoviesModal from "@/components/AddMoviesModal";
+import { Movie } from "@/types/Movie";
 
-export default function AddMovieItem() {
+interface IAddMovieItemProps {
+    listId: number;
+    movies: Movie[];
+    refetchMovies: () => void;
+}
+
+export default function AddMovieItem({
+    listId,
+    movies,
+    refetchMovies,
+}: IAddMovieItemProps) {
     const [showAddMoviesModal, setShowAddMoviesModal] = useState(false);
 
     return (
@@ -31,7 +42,10 @@ export default function AddMovieItem() {
             {showAddMoviesModal && (
                 <Modal onClose={() => setShowAddMoviesModal(false)}>
                     <AddMoviesModal
+                        listId={listId}
+                        movies={movies}
                         close={() => setShowAddMoviesModal(false)}
+                        refetchMovies={refetchMovies}
                     />
                 </Modal>
             )}

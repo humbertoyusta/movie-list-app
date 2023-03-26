@@ -8,7 +8,6 @@ export default async function Page({
     params: { listId: string };
 }) {
     const movieList = await sdk.getMovieList({ id: parseInt(listId) });
-    console.log("movieList", movieList);
 
     return (
         <>
