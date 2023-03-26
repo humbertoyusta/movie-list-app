@@ -3,8 +3,8 @@ import React from "react";
 import Sidebar from "@/components/Sidebar";
 
 export const metadata = {
-    title: "Movie List App",
-    description: "Movie List App",
+    title: "MovieDetails List App",
+    description: "MovieDetails List App",
 };
 
 export default function RootLayout({

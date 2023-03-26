@@ -1,6 +1,6 @@
 export const metadata = {
-    title: "MovieDetails List",
-    description: "MovieDetails List",
+    title: "MovieDetails Details",
+    description: "MovieDetails Details",
 };
 
 export default function ListsLayout({

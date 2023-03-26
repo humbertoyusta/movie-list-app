@@ -3,7 +3,7 @@
 import styled from "styled-components";
 import { theme } from "@/theme";
 
-export const MovieWrapper = styled.div`
+export const MovieDetailsWrapper = styled.div`
     width: 68vw;
     margin-left: 22vw;
     margin-right: 10vw;
@@ -19,7 +19,7 @@ export const ImageWrapper = styled.div`
     position: relative;
 `;
 
-export const MovieInfoWrapper = styled.div`
+export const MovieDetailsInfoWrapper = styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 2vw;
@@ -28,14 +28,7 @@ export const MovieInfoWrapper = styled.div`
     width: 24vw;
 `;
 
-export const MovieDescription = styled.p`
-    color: ${theme.colors.dark_gray};
-    font-size: 1.2rem;
-    font-style: italic;
-    font-weight: 300;
-`;
-
-export const MovieInfo = styled.p`
+export const MovieDetailsInfo = styled.p`
     color: ${theme.colors.light_black};
     font-size: 1.2rem;
     font-weight: 300;
