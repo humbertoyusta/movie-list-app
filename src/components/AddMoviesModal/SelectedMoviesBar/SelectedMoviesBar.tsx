@@ -4,6 +4,7 @@ import {
 } from "@/components/AddMoviesModal/SelectedMoviesBar/SelectedMoviesBar.styled";
 import IconButton from "@/components/Buttons/IconButton";
 import useKeypress from "@/hooks/useKeypress";
+import { useState } from "react";
 
 interface ISelectedMoviesBarProps {
     count: number;
@@ -17,6 +18,7 @@ export default function SelectedMoviesBar({
     onClose,
 }: ISelectedMoviesBarProps) {
     useKeypress("Enter", syncMovies);
+    const [isSyncing, setIsSyncing] = useState(false);
 
     return (
         <SelectedMoviesBarWrapper>
@@ -24,7 +26,12 @@ export default function SelectedMoviesBar({
                 kind="add"
                 color="gray"
                 noPadding
-                onClick={() => syncMovies()}
+                onClick={() => {
+                    setIsSyncing(true);
+                    syncMovies();
+                    setIsSyncing(false);
+                }}
+                disabled={isSyncing}
             />
             <SelectedMoviesCounter>
                 {count} movies selected

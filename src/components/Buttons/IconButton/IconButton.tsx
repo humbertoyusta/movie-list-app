@@ -8,6 +8,7 @@ interface IButtonProps {
     onClick?: () => void;
     color?: "gray";
     noPadding?: boolean;
+    disabled?: boolean;
 }
 
 export default function IconButton({
@@ -15,12 +16,14 @@ export default function IconButton({
     onClick,
     color,
     noPadding,
+    disabled,
 }: IButtonProps) {
     return (
         <IconButtonWrapper
             color={color}
             onClick={onClick}
             noPadding={noPadding}
+            disabled={disabled}
         >
             {kind === "back" && <TiArrowBack size={28} />}
             {kind === "close" && <AiOutlineClose size={noPadding ? 20 : 28} />}
