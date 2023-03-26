@@ -208,6 +208,25 @@ export type TodoListItem = {
     todo_list_id: Scalars["Int"];
 };
 
+export type AddMovieMutationVariables = Exact<{
+    listId: Scalars["Int"];
+    imdbId: Scalars["String"];
+}>;
+
+export type AddMovieMutation = {
+    addMovie: {
+        id: number;
+        movie: {
+            imdbID?: string | null;
+            Title?: string | null;
+            Poster?: string | null;
+            imdbRating?: string | null;
+            Year?: string | null;
+            Genre?: string | null;
+        };
+    };
+};
+
 export type CreateListMutationVariables = Exact<{
     name: Scalars["String"];
     email: Scalars["String"];
@@ -267,6 +286,21 @@ export type SearchMovieByTitleQuery = {
     } | null> | null;
 };
 
+export const AddMovieDocument = /*#__PURE__*/ gql`
+    mutation addMovie($listId: Int!, $imdbId: String!) {
+        addMovie(listId: $listId, imdbId: $imdbId) {
+            id
+            movie {
+                imdbID
+                Title
+                Poster
+                imdbRating
+                Year
+                Genre
+            }
+        }
+    }
+`;
 export const CreateListDocument = /*#__PURE__*/ gql`
     mutation createList($name: String!, $email: String!) {
         createList(input: { name: $name, email: $email }) {
@@ -338,6 +372,21 @@ export function getSdk(
     withWrapper: SdkFunctionWrapper = defaultWrapper
 ) {
     return {
+        addMovie(
+            variables: AddMovieMutationVariables,
+            requestHeaders?: Dom.RequestInit["headers"]
+        ): Promise<AddMovieMutation> {
+            return withWrapper(
+                (wrappedRequestHeaders) =>
+                    client.request<AddMovieMutation>(
+                        AddMovieDocument,
+                        variables,
+                        { ...requestHeaders, ...wrappedRequestHeaders }
+                    ),
+                "addMovie",
+                "mutation"
+            );
+        },
         createList(
             variables: CreateListMutationVariables,
             requestHeaders?: Dom.RequestInit["headers"]
